@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href='http://10.10.30.212/main.css'/>
+    <link rel="stylesheet" href='http://10.10.30.212/usbsrvcmd-web.css'/>
     <script>
         function generate_password() {
             var characters = "23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz..,,";
@@ -17,7 +17,7 @@
                 password += characters.charAt(random_index);
             }
             password += ")";
-            document.getElementById("password").textContent = password;
+            document.getElementById("password").value = password;
         }
         function copy_to_clipboard() {
             var password_text = document.getElementById("password");
@@ -37,7 +37,7 @@
     <i>Набор символов для генерации состоит из заглавных, строчных букв и цифр + ., и ")" в конце.</i><br>
     <i>Символы</i><tt> oO0, lI1 </tt><i>не используются.</i><br>
     <button onclick="generate_password()" class="button">⚡ generate!</button><br>
-    <pre id="password">          </pre>
+    <input id="password" class="password_field"></input>
     <hr style="border-style: dashed;">
     <button onclick="copy_to_clipboard()" class="button">📋 copy to clipboard</button>
 </body>

@@ -1,9 +1,9 @@
 import subprocess
-from flask import Flask, request, send_from_directory, jsonify
+from flask import Flask, request, jsonify
 from flask_htpasswd import HtPasswdAuth
 
-app = Flask(__name__)
-app.config['FLASK_HTPASSWD_PATH'] = 'C:\\Users\\Pasharet\\Documents\\GitHub\\usbsrvcmd-web\\.htpasswd'
+app = Flask(__name__, static_url_path='')
+app.config['FLASK_HTPASSWD_PATH'] = 'C:\\Users\\Pasharet\\Documents\\GitHub\\usbsrvcmd-web\\static\\.htpasswd'
 htpasswd = HtPasswdAuth(app)
 
 valid_commands = [
@@ -23,16 +23,8 @@ valid_commands = [
 
 @app.route('/')
 @htpasswd.required
-def index(user):
-    return send_from_directory('.', 'index.htm')
-
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory('.', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
-
-@app.route('/main.css')
-def css():
-    return send_from_directory('.', 'main.css')
+def root(user):
+    return app.send_static_file('usbsrvcmd-web.htm')
 
 @app.route('/execute', methods=['POST'])
 def execute_command():
@@ -45,10 +37,6 @@ def execute_command():
             return f"Command execution error: {str(e)}"
     else:
         return jsonify(error="Invalid command!")
-
-@app.route('/genpas.htm')
-def estgenpas():
-    return send_from_directory('.', 'genpas.htm')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)

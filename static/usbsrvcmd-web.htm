@@ -3,14 +3,11 @@
 <head>
     <title>usbsrvcmd-web-18072023</title>
     <meta charset="utf-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href='http://10.10.30.212/main.css'/>
+    <link rel="stylesheet" href='../usbsrvcmd-web.css'/>
     <script type="text/javascript">
         function send_command(command) {
             var xhr = new XMLHttpRequest();
-            var url = "http://10.10.30.212:80/execute";
+            var url = "../execute";
             var params = "command=" + encodeURIComponent(command);
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -61,7 +58,7 @@
     <div id="console" class="output"></div><br>
     <hr style="border-style: dashed;">
     <a style="color: #f1f1f1;" href="http://10.10.30.212:1337">test #1</a><br>
-    <a style="color: #f1f1f1;" href="http://10.10.30.212/genpas.htm">genpas</a><br>
+    <a style="color: #f1f1f1;" href="../genpas.htm">genpas</a><br>
     <a style="color: #f1f1f1;" href="https://github.com/Pasharet/curl-updsrc/raw/main/cqwer-18072023-setup.exe">cqwer</a>
 </body>
 </html>

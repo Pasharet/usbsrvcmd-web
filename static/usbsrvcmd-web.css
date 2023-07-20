@@ -1,0 +1,101 @@
+body {
+    background-color: #1a1a1a;
+    color: #f1f1f1;
+    font-family: "Roboto", sans-serif;
+    font-size: 12pt;
+}
+
+/* roboto-regular - cyrillic_latin */
+@font-face {
+    font-display: swap;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/roboto-v30-cyrillic_latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/roboto-v30-cyrillic_latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/roboto-v30-cyrillic_latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+         url('../fonts/roboto-v30-cyrillic_latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+         url('../fonts/roboto-v30-cyrillic_latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+         url('../fonts/roboto-v30-cyrillic_latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+
+/* roboto-mono-regular - cyrillic_latin */
+@font-face {
+    font-display: swap;
+    font-family: "Roboto Mono";
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/roboto-mono-v22-cyrillic_latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/roboto-mono-v22-cyrillic_latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/roboto-mono-v22-cyrillic_latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+         url('../fonts/roboto-mono-v22-cyrillic_latin-regular.woff') format('woff'), /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+         url('../fonts/roboto-mono-v22-cyrillic_latin-regular.ttf') format('truetype'), /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+         url('../fonts/roboto-mono-v22-cyrillic_latin-regular.svg#RobotoMono') format('svg'); /* Legacy iOS */
+}
+
+.button,
+.text_field,
+.output,
+.password_field {
+    display: inline-block;
+    font-family: "Roboto Mono", monospace;
+    font-size: 12pt;
+    margin: 8px 0;
+    padding: 8px;
+}
+
+.button {
+    background-color: #555;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.button:hover {
+    background-color: #fff;
+    color: #555;
+}
+
+.epilepsy {
+    animation: epilepsy 0.5s infinite;
+}
+
+@keyframes epilepsy {
+    0% {
+      background-color: #555;
+      color: #fff;
+    }
+    50% {
+      background-color: #fff;
+      color: #555;
+    }
+    100% {
+      background-color: #555;
+      color: #fff;
+    }
+}
+
+.text_field {
+    background-color: #555;
+    border: none;
+    color: #fff;
+    width: auto;
+}
+
+.password_field {
+    background-color: #333;
+    border: none;
+    color: #fff;
+    font-size: 18pt;
+    width: 128px;
+}
+
+.output {
+    background-color: #333;
+    border: none;
+    color: #fff;
+    font-size: 10pt;
+    margin: 0;
+    padding: 0 8px;
+}
