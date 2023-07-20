@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>genpas-10072023</title>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='http://10.10.30.212/main.css'/>
+    <script>
+        function generate_password() {
+            var characters = "23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz..,,";
+            var password = "";
+            for (var i = 0; i < 9; i++) {
+                var random_index = Math.floor(Math.random() * characters.length);
+                password += characters.charAt(random_index);
+            }
+            password += ")";
+            document.getElementById("password").textContent = password;
+        }
+        function copy_to_clipboard() {
+            var password_text = document.getElementById("password");
+            var password = password_text.textContent;
+            var textarea = document.createElement("textarea");
+            textarea.value = password;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+        }
+    </script>
+</head>
+<body>
+    <b>Простенький генератор паролей, использующий метод (JS):</b><tt> Math.random</tt><br><br>
+    <i>Длина пароля: 10 символов.</i><br>
+    <i>Набор символов для генерации состоит из заглавных, строчных букв и цифр + ., и ")" в конце.</i><br>
+    <i>Символы</i><tt> oO0, lI1 </tt><i>не используются.</i><br>
+    <button onclick="generate_password()" class="button">⚡ generate!</button><br>
+    <pre id="password">          </pre>
+    <hr style="border-style: dashed;">
+    <button onclick="copy_to_clipboard()" class="button">📋 copy to clipboard</button>
+</body>
+</html>

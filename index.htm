@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>usbsrvcmd-web-18072023</title>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href='http://10.10.30.212/main.css'/>
+    <script type="text/javascript">
+        function send_command(command) {
+            var xhr = new XMLHttpRequest();
+            var url = "http://10.10.30.212:80/execute";
+            var params = "command=" + encodeURIComponent(command);
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = xhr.responseText;
+                    var consoleElement = document.getElementById("console");
+                    var lines = response.split("\n");
+                    lines.forEach(function(line) {
+                        var logMessage = document.createElement("p");
+                        logMessage.textContent = line;
+                        consoleElement.appendChild(logMessage);
+                    });
+                }
+            };
+            xhr.send(params);
+        }
+        function clear_output() {
+            document.getElementById("console").innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+    <b>Отключить ключ от клиента (USB over Network):</b><br>
+    <button onclick="send_command('usbsrvcmd disconnect 0')" class="button">devID: 0</button>&nbsp;
+    <button onclick="send_command('usbsrvcmd disconnect 1')" class="button">devID: 1</button>&nbsp;
+    <button onclick="send_command('usbsrvcmd disconnect 2')" class="button">devID: 2</button>&nbsp;
+    <button onclick="send_command('usbsrvcmd disconnect 3')" class="button">devID: 3</button><br>
+    <button onclick="send_command('usbsrvcmd disconnect 4')" class="button">devID: 4</button>&nbsp;
+    <button onclick="send_command('usbsrvcmd disconnect 5')" class="button">devID: 5</button>&nbsp;
+    <button onclick="send_command('usbsrvcmd disconnect 6')" class="button">devID: 6</button>&nbsp;
+    <button onclick="send_command('usbsrvcmd disconnect 7')" class="button">devID: 7</button><br>
+    <button onclick="send_command('usbsrvcmd disconnect 8')" class="button">devID: 8</button>&nbsp;
+    <button onclick="send_command('usbsrvcmd disconnect 9')" class="button">devID: 9</button>&nbsp;
+    <hr style="border-style: dashed;">
+    <button onclick="send_command('usbsrvcmd list -o')" class="button epilepsy">Запрос списка устройств (devID - status, user)</button><br>
+    <input type="text" id="manual_command" placeholder="command..." class="text_field" onkeydown="if (event.keyCode === 13) {
+        send_command(document.getElementById('manual_command').value); document.getElementById('manual_command').value = ''; }" />&nbsp;
+    <button onclick="send_command(document.getElementById('manual_command').value); document.getElementById('manual_command').value = '';" class="button">send</button><br>
+    <tt style="color: #aaa; font-size: 10pt;">
+        usbsrvcmd disconnect 0-9<br>
+        usbsrvcmd list -o<br>
+        shutdown /r<br>
+    </tt>
+    <hr style="border-style: dashed;">
+    <b>Ответы от сервера:</b><br>
+    <button onclick="clear_output()" class="button">🧹</button><br>
+    <div id="console" class="output"></div><br>
+    <hr style="border-style: dashed;">
+    <a style="color: #f1f1f1;" href="http://10.10.30.212:1337">test #1</a><br>
+    <a style="color: #f1f1f1;" href="http://10.10.30.212/genpas.htm">genpas</a><br>
+    <a style="color: #f1f1f1;" href="https://github.com/Pasharet/curl-updsrc/raw/main/cqwer-18072023-setup.exe">cqwer</a>
+</body>
+</html>

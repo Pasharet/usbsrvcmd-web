@@ -46,9 +46,9 @@ def execute_command():
     else:
         return jsonify(error="Invalid command!")
 
-@app.route('/estgenpas.htm')
+@app.route('/genpas.htm')
 def estgenpas():
-    return send_from_directory('.', 'estgenpas.htm')
+    return send_from_directory('.', 'genpas.htm')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
