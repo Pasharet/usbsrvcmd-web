@@ -1,5 +1,3 @@
 .htpasswd
-.vscode
 fonts
-genpas.htm
-run.bat
+venv
